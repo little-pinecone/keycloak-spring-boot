@@ -20,4 +20,11 @@ public class TestProductProvider {
                 .availableQuantity(dummy.number().nextInt(1, 200))
                 .build();
     }
+
+    public Product full() {
+        Product product = withoutId();
+        product.setId(dummy.identifier().uuid());
+
+        return product;
+    }
 }

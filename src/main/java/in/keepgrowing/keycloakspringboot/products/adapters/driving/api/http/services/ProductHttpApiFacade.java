@@ -1,7 +1,6 @@
 package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services;
 
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
-import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponseSecond;
 import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 import in.keepgrowing.keycloakspringboot.products.domain.ports.persistence.ProductRepository;
 import in.keepgrowing.keycloakspringboot.validation.domain.ports.ThrowingValidator;
@@ -20,7 +19,6 @@ public class ProductHttpApiFacade {
 
     public List<ProductResponse> findAll() {
         List<Product> products = productRepository.findAll();
-//        var test = ProductResponseSecond.from(products.get(0), validator);
 
         return products.stream()
                 .map((Product product) -> ProductResponse.from(product, validator))

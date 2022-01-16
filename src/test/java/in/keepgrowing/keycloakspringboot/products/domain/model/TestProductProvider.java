@@ -27,4 +27,16 @@ public class TestProductProvider {
 
         return product;
     }
+
+    public Product invalid() {
+        return Product.builder()
+                .id(null)
+                .name("")
+                .color(null)
+                .ean("")
+                .countryOfOrigin(null)
+                .price("")
+                .availableQuantity(-1)
+                .build();
+    }
 }

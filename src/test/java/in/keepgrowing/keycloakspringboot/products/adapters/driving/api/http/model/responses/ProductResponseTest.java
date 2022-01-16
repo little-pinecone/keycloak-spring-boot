@@ -7,7 +7,9 @@ import in.keepgrowing.keycloakspringboot.validation.domain.ports.ThrowingValidat
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import javax.validation.ConstraintViolationException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProductResponseTest {
 
@@ -25,5 +27,23 @@ class ProductResponseTest {
         Product product = productProvider.full();
 
         assertDoesNotThrow(() -> ProductResponse.from(product, validator));
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCreatingInvalidResponseFromProduct() {
+        Product product = productProvider.invalid();
+
+        assertThrows(ConstraintViolationException.class, () -> ProductResponse.from(product, validator));
+    }
+
+    @Test
+    void shouldCatchAllConstrainViolations() {
+        Product product = productProvider.invalid();
+
+        try {
+            ProductResponse.from(product, validator);
+        } catch (ConstraintViolationException e) {
+            assertEquals(7, e.getConstraintViolations().size());
+        }
     }
 }

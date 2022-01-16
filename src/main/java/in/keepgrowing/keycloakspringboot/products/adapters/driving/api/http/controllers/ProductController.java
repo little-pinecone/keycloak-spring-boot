@@ -25,4 +25,9 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> findAll() {
         return new ResponseEntity<>(apiFacade.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("one")
+    public ResponseEntity<ProductResponse> findOne() {
+        return new ResponseEntity<>(apiFacade.findAll().get(0), HttpStatus.OK);
+    }
 }

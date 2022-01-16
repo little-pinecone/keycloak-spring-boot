@@ -37,11 +37,13 @@ public record ProductResponse(
                 product.getName(),
                 product.getColor(),
                 product.getEan(),
-                product.getCountryOfOrigin(),
-                product.getPrice(),
+//                product.getCountryOfOrigin(),
+//                product.getPrice(),
+                null,
+                " ",
                 product.getAvailableQuantity()
         );
-        validator.validate(response);
+//        validator.validate(response);
 
         return response;
     }

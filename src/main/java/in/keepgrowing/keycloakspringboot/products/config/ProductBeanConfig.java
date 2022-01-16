@@ -3,7 +3,6 @@ package in.keepgrowing.keycloakspringboot.products.config;
 import in.keepgrowing.keycloakspringboot.products.adapters.driven.persistence.InMemoryProductRepository;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
 import in.keepgrowing.keycloakspringboot.products.domain.ports.persistence.ProductRepository;
-import in.keepgrowing.keycloakspringboot.validation.adapters.driven.JavaxThrowingValidator;
 import in.keepgrowing.keycloakspringboot.validation.domain.ports.ThrowingValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +18,5 @@ public class ProductBeanConfig {
     @Bean
     public ProductHttpApiFacade productHttpApiFacade(ProductRepository productRepository, ThrowingValidator validator) {
         return new ProductHttpApiFacade(productRepository, validator);
-    }
-
-    @Bean
-    public ThrowingValidator throwingValidator() {
-        return new JavaxThrowingValidator();
     }
 }

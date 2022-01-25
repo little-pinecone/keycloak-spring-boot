@@ -3,7 +3,7 @@ package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.ser
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 import in.keepgrowing.keycloakspringboot.products.domain.model.TestProductProvider;
-import in.keepgrowing.keycloakspringboot.products.domain.ports.persistence.ProductRepository;
+import in.keepgrowing.keycloakspringboot.products.domain.persistence.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

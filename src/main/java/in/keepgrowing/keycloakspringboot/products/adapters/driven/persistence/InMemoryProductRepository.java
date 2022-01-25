@@ -2,7 +2,7 @@ package in.keepgrowing.keycloakspringboot.products.adapters.driven.persistence;
 
 import dev.codesoapbox.dummy4j.Dummy4j;
 import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
-import in.keepgrowing.keycloakspringboot.products.domain.ports.persistence.ProductRepository;
+import in.keepgrowing.keycloakspringboot.products.domain.persistence.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;

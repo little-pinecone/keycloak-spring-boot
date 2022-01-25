@@ -1,4 +1,4 @@
-package in.keepgrowing.keycloakspringboot.products.domain.ports.persistence;
+package in.keepgrowing.keycloakspringboot.products.domain.persistence;
 
 import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 

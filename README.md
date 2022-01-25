@@ -6,6 +6,11 @@
 
 This project shows an example integration of Spring Boot with Keycloak.
 
+## Prerequisites
+
+* JDK 17+ ([How to install OpenJDK 17 on Ubuntu](https://keepgrowing.in/java/how-to-install-openjdk-17-on-ubuntu/))
+* [Maven](https://maven.apache.org/) (or you can use mvnw provided in the project)
+
 ## Getting started
 
 First, [clone](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository)

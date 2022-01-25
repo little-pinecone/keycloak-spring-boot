@@ -36,6 +36,32 @@ You can run tests with:
 mvn test
 ```
 
+### Credentials
+
+Below you'll find a list of default user accounts.
+
+#### Keycloak admin
+
+* username: `keycloak`
+* password: `keycloak`
+
+#### Default users
+
+* usernames: `christina`, `hanna`, `carlo`, `noel`
+* password: `test`
+* realm role: `user`
+
+### Visit Keycloak
+
+* Visit the [http://localhost:8024/auth](http://localhost:8024/auth) url. Select the `Administration Console` option and
+  log in as the Keycloak admin [`keycloak:keycloak`].
+* As an admin you can see all users associated with the `keep-growing` realm by clicking the `View all users` button on
+  the [http://localhost:8024/auth/admin/master/console/#/realms/keep-growing/users](http://localhost:8024/auth/admin/master/console/#/realms/keep-growing/users)
+  page.
+* What's more, you can log in as any user associated with the `keep-growing` realm by clicking the `Sign in` button on
+  the [http://localhost:8024/auth/realms/keep-growing/account](http://localhost:8024/auth/realms/keep-growing/account)
+  page.
+
 ### API documentation
 
 The Postman collection for the API is publicly available[^1], click the button below and select the `localhost`
@@ -55,4 +81,6 @@ screen.
 
 * [Spring Boot v2.6+](https://spring.io/projects/spring-boot)
 * [Maven](https://maven.apache.org/)
+* [Keycloak](https://www.keycloak.org/)
+* [Docker Compose](https://docs.docker.com/compose/)
 * [Dummy4j](https://daniel-frak.github.io/dummy4j/)

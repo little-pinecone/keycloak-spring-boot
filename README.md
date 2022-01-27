@@ -9,7 +9,10 @@ This project shows an example integration of Spring Boot with Keycloak.
 ## Prerequisites
 
 * JDK 17+ ([How to install OpenJDK 17 on Ubuntu](https://keepgrowing.in/java/how-to-install-openjdk-17-on-ubuntu/))
-* [Maven](https://maven.apache.org/) (or you can use mvnw provided in the project)
+* [Maven](https://maven.apache.org/) (or you can use `mvnw` provided in the project)
+* [Docker](https://docs.docker.com/get-docker/)
+  (A configuration similar to that used in this project is described in
+  [Keycloak in Docker #1 – How to run Keycloak in a Docker container](https://keepgrowing.in/tools/keycloak-in-docker-1-how-to-run-keycloak-in-a-docker-container/))
 
 ## Getting started
 
@@ -80,7 +83,7 @@ screen.
 ## Built With
 
 * [Spring Boot v2.6+](https://spring.io/projects/spring-boot)
-* [Maven](https://maven.apache.org/)
-* [Keycloak](https://www.keycloak.org/)
+* [OpenJDK 17](https://jdk.java.net/17/), [Maven](https://maven.apache.org/)
+* [Keycloak](https://www.keycloak.org/), [jboss/keycloak Docker image](https://hub.docker.com/r/jboss/keycloak/)
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Dummy4j](https://daniel-frak.github.io/dummy4j/)

@@ -5,10 +5,10 @@ import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.mode
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.TestProductResponseProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
 import in.keepgrowing.keycloakspringboot.products.config.MvcConfig;
+import in.keepgrowing.keycloakspringboot.shared.config.annotations.RestControllerIntegrationTestConfig;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -21,8 +21,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(value = ProductController.class)
+@RestControllerIntegrationTestConfig(value = ProductController.class)
 class ProductControllerTest {
+
     private static final String BASE_PATH = "/" + MvcConfig.API_PREFIX + "/" + ProductControllerPaths.PRODUCTS_PATH;
 
     private TestProductResponseProvider productResponseProvider;

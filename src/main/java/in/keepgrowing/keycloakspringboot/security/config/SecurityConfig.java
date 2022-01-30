@@ -23,7 +23,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and()
                 .authorizeRequests()
-                .anyRequest().permitAll();
+                .anyRequest().authenticated();
     }
 
     @Override

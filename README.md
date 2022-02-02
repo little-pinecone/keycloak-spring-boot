@@ -11,8 +11,12 @@ This project shows an example integration of Spring Boot with Keycloak.
 * JDK 17+ ([How to install OpenJDK 17 on Ubuntu](https://keepgrowing.in/java/how-to-install-openjdk-17-on-ubuntu/))
 * [Maven](https://maven.apache.org/) (or you can use `mvnw` provided in the project)
 * [Docker](https://docs.docker.com/get-docker/)
-  (A configuration similar to that used in this project is described in
-  [Keycloak in Docker #1 – How to run Keycloak in a Docker container](https://keepgrowing.in/tools/keycloak-in-docker-1-how-to-run-keycloak-in-a-docker-container/))
+  (A configuration similar to the one used in this project is described in
+  [Keycloak in Docker #1 – How to run Keycloak in a Docker container](https://keepgrowing.in/tools/keycloak-in-docker-1-how-to-run-keycloak-in-a-docker-container/)
+  ,
+  [Keycloak in Docker #2 – How to import a Keycloak realm](https://keepgrowing.in/tools/keycloak-in-docker-2-how-to-import-a-keycloak-realm/))
+  and [Keycloak in Docker #5 – How to export a realm with users and secrets](https://keepgrowing.in/tools/keycloak-in-docker-5-how-to-export-a-realm-with-users-and-secrets/))
+  .
 
 ## Getting started
 

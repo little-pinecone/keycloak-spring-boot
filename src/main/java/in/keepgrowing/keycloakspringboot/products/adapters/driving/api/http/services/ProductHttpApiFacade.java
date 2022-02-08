@@ -6,7 +6,6 @@ import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 import in.keepgrowing.keycloakspringboot.products.domain.persistence.ProductRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 public class ProductHttpApiFacade {
 
@@ -24,13 +23,17 @@ public class ProductHttpApiFacade {
                 .toList();
     }
 
-    public ProductResponse save(ProductRequest newProduct) {
-        return new ProductResponse(UUID.fromString("123e4567-e89b-42d3-a456-556642440000"),
-                newProduct.name(),
-                newProduct.color(),
-                newProduct.ean(),
-                newProduct.countryOfOrigin(),
-                newProduct.price(),
-                newProduct.availableQuantity());
+    public ProductResponse save(ProductRequest productRequest) {
+        var product = Product.builder()
+                .name(productRequest.name())
+                .color(productRequest.color())
+                .ean(productRequest.ean())
+                .countryOfOrigin(productRequest.countryOfOrigin())
+                .price(productRequest.price())
+                .availableQuantity(productRequest.availableQuantity())
+                .build();
+        Product saved = productRepository.save(product);
+
+        return ProductResponse.from(saved);
     }
 }

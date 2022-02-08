@@ -45,10 +45,10 @@ public class InMemoryProductRepository implements ProductRepository {
     }
 
     @Override
-    public Optional<Product> save(Product productDetails) {
-        productDetails.setId(dummy.identifier().uuid());
-        products.add(productDetails);
+    public Product save(Product product) {
+        product.setId(dummy.identifier().uuid());
+        products.add(product);
 
-        return findById(productDetails.getId());
+        return product;
     }
 }

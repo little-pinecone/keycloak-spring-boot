@@ -1,5 +1,7 @@
 package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services;
 
+import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.ProductRequest;
+import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.TestProductRequestProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 import in.keepgrowing.keycloakspringboot.products.domain.model.TestProductProvider;
@@ -12,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -20,6 +23,7 @@ class ProductHttpApiFacadeTest {
 
     private ProductHttpApiFacade apiFacade;
     private TestProductProvider productProvider;
+    private TestProductRequestProvider productRequestProvider;
 
     @Mock
     private ProductRepository productRepository;
@@ -28,6 +32,7 @@ class ProductHttpApiFacadeTest {
     void setUp() {
         apiFacade = new ProductHttpApiFacade(productRepository);
         productProvider = new TestProductProvider();
+        productRequestProvider = new TestProductRequestProvider();
     }
 
     @Test
@@ -42,5 +47,19 @@ class ProductHttpApiFacadeTest {
         List<ProductResponse> actual = apiFacade.findAll();
 
         assertTrue(actual.contains(expectedElement));
+    }
+
+    @Test
+    void shouldSaveAndReturnNewProduct() {
+        ProductRequest request = productRequestProvider.full();
+        Product product = productProvider.fromRequest(request);
+        ProductResponse expected = ProductResponse.from(product);
+
+        when(productRepository.save(product))
+                .thenReturn(product);
+
+        ProductResponse actual = apiFacade.save(request);
+
+        assertEquals(expected, actual);
     }
 }

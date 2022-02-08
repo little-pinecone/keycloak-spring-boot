@@ -51,12 +51,11 @@ class InMemoryProductRepositoryTest {
     @Test
     void shouldSaveAndReturnProduct() {
         var productProvider = new TestProductProvider();
-        Product productDetails = productProvider.withoutId();
+        Product product = productProvider.withoutId();
 
-        Optional<Product> actual = productRepository.save(productDetails);
+        Product actual = productRepository.save(product);
 
         assertEquals(InMemoryProductRepository.INITIAL_AMOUNT + 1, productRepository.findAll().size());
-        assertTrue(actual.isPresent());
-        assertNotNull(actual.get().getId());
+        assertNotNull(actual.getId());
     }
 }

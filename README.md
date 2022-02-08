@@ -78,6 +78,10 @@ environment:
 
 ![Postman collection screenshot](readme-images/postman-collection.png)
 
+The authorization config used in the collection is described in
+the [Kecloak in Docker #7 – How to authorize requests via Postman](https://keepgrowing.in/tools/kecloak-in-docker-7-how-to-authorize-requests-via-postman/)
+post
+
 [^1]: Clicking the `Run in Postman` button navigates to the page where you can fork the collection to your workspace.
 [Forking the collection](https://learning.postman.com/docs/collaborating-in-postman/version-control-for-collections/#forking-a-collection)
 into your workspace will enable you to contribute to the source collection using pull requests. You can also view the

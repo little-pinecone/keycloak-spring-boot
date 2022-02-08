@@ -1,6 +1,8 @@
 package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.ProductRequest;
+import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.TestProductRequestProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.TestProductResponseProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
@@ -18,7 +20,9 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -28,6 +32,7 @@ class ProductControllerTest {
     private static final String BASE_PATH = "/" + MvcConfig.API_PREFIX + "/" + ProductControllerPaths.PRODUCTS_PATH;
 
     private TestProductResponseProvider productResponseProvider;
+    private TestProductRequestProvider productRequestProvider;
 
     @Autowired
     private ProductController controller;
@@ -44,6 +49,7 @@ class ProductControllerTest {
     @BeforeEach
     void setUp() {
         productResponseProvider = new TestProductResponseProvider();
+        productRequestProvider = new TestProductRequestProvider();
     }
 
     @Test
@@ -62,6 +68,24 @@ class ProductControllerTest {
 
         mvc.perform(get(BASE_PATH)
                         .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().json(expected));
+    }
+
+    @Test
+    @WithMockUser
+    void shouldSaveNewProduct() throws Exception {
+        ProductRequest newProduct = productRequestProvider.full();
+        ProductResponse savedProduct = productResponseProvider.full();
+        String expected = objectMapper.writeValueAsString(savedProduct);
+
+        when(apiFacade.save(newProduct))
+                .thenReturn(savedProduct);
+
+        mvc.perform(post(BASE_PATH)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(newProduct))
+                        .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().json(expected));
     }

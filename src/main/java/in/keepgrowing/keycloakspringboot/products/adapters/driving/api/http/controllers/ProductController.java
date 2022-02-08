@@ -1,13 +1,12 @@
 package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.controllers;
 
+import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.ProductRequest;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +23,10 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<List<ProductResponse>> findAll() {
         return new ResponseEntity<>(apiFacade.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<ProductResponse>save(@RequestBody ProductRequest newProduct) {
+        return new ResponseEntity<>(apiFacade.save(newProduct), HttpStatus.OK);
     }
 }

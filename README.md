@@ -71,6 +71,16 @@ Below you'll find a list of default user accounts.
 
 ### API documentation
 
+#### Swagger UI
+
+[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+#### OpenAPI
+
+[http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+#### Postman
+
 The Postman collection for the API is publicly available[^1], click the button below and select the `localhost`
 environment:
 
@@ -94,5 +104,6 @@ screen.
 * [OpenJDK 17](https://jdk.java.net/17/), [Maven](https://maven.apache.org/)
 * [Keycloak](https://www.keycloak.org/), [jboss/keycloak Docker image](https://hub.docker.com/r/jboss/keycloak/),
   [Keycloak Spring Boot adapter](https://www.keycloak.org/docs/latest/securing_apps/#_spring_boot_adapter)
+* [springdoc-openapi](https://springdoc.org/)
 * [Docker Compose](https://docs.docker.com/compose/)
 * [Dummy4j](https://daniel-frak.github.io/dummy4j/)

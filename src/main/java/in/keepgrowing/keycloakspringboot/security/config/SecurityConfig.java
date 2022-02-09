@@ -18,11 +18,18 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @ConditionalOnProperty(name = "security.config.use-keycloak", havingValue = "true", matchIfMissing = true)
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
+    private static final String[] SWAGGER_WHITELIST = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/swagger-ui.html",
+    };
+
     public static void configureApiSecurity(HttpSecurity http) throws Exception {
         http
                 .csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .and()
                 .authorizeRequests()
+                .antMatchers(SWAGGER_WHITELIST).permitAll()
                 .anyRequest().authenticated();
     }
 

@@ -31,12 +31,17 @@ class InMemoryProductRepositoryTest {
 
     @Test
     void shouldReturnProductById() {
-        List<Product> products = productRepository.findAll();
-        UUID id = products.get(0).getId();
+        UUID id = getProductIdBasedOnExistingOne();
 
         Optional<Product> actual = productRepository.findById(id);
 
         assertTrue(actual.isPresent());
+    }
+
+    private UUID getProductIdBasedOnExistingOne() {
+        List<Product> products = productRepository.findAll();
+
+        return UUID.fromString(products.get(0).getId().toString());
     }
 
     @Test
@@ -57,5 +62,27 @@ class InMemoryProductRepositoryTest {
 
         assertEquals(InMemoryProductRepository.INITIAL_AMOUNT + 1, productRepository.findAll().size());
         assertNotNull(actual.getId());
+    }
+
+    @Test
+    void shouldDeleteProductById() {
+        UUID id = getProductIdBasedOnExistingOne();
+
+        productRepository.deleteById(id);
+
+        Optional<Product> nonExisting = productRepository.findById(id);
+
+        assertTrue(nonExisting.isEmpty());
+    }
+
+    @Test
+    void shouldTryToDeleteNonExistingProductById() {
+        var id = UUID.fromString("11111111-1111-1111-1111-111111111111");
+
+        productRepository.deleteById(id);
+
+        Optional<Product> nonExisting = productRepository.findById(id);
+
+        assertTrue(nonExisting.isEmpty());
     }
 }

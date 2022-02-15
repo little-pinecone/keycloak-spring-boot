@@ -6,6 +6,7 @@ import in.keepgrowing.keycloakspringboot.products.domain.model.Product;
 import in.keepgrowing.keycloakspringboot.products.domain.persistence.ProductRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 public class ProductHttpApiFacade {
 
@@ -35,5 +36,9 @@ public class ProductHttpApiFacade {
         Product saved = productRepository.save(product);
 
         return ProductResponse.from(saved);
+    }
+
+    public void deleteById(UUID productId) {
+        productRepository.deleteById(productId);
     }
 }

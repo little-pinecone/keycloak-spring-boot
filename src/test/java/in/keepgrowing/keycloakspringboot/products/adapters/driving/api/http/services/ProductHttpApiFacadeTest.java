@@ -9,28 +9,32 @@ import in.keepgrowing.keycloakspringboot.products.domain.persistence.ProductRepo
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class ProductHttpApiFacadeTest {
 
-    private ProductHttpApiFacade apiFacade;
     private TestProductProvider productProvider;
     private TestProductRequestProvider productRequestProvider;
+
+    @InjectMocks
+    private ProductHttpApiFacade apiFacade;
 
     @Mock
     private ProductRepository productRepository;
 
     @BeforeEach
     void setUp() {
-        apiFacade = new ProductHttpApiFacade(productRepository);
         productProvider = new TestProductProvider();
         productRequestProvider = new TestProductRequestProvider();
     }
@@ -61,5 +65,13 @@ class ProductHttpApiFacadeTest {
         ProductResponse actual = apiFacade.save(request);
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldDeleteProductById() {
+        var id = UUID.fromString("11111111-1111-1111-1111-111111111111");
+        apiFacade.deleteById(id);
+
+        verify(productRepository).deleteById(id);
     }
 }

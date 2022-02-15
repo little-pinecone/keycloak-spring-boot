@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(value = ProductControllerPaths.PRODUCTS_PATH, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -31,7 +32,15 @@ public class ProductController {
 
     @PostMapping
     @Operation(summary = "Save a new product")
-    public ResponseEntity<ProductResponse>save(@RequestBody ProductRequest newProduct) {
+    public ResponseEntity<ProductResponse> save(@RequestBody ProductRequest newProduct) {
         return new ResponseEntity<>(apiFacade.save(newProduct), HttpStatus.OK);
+    }
+
+    @DeleteMapping("{productId}")
+    @Operation(summary = "Remove a product by id")
+    public ResponseEntity<Void> delete(@PathVariable UUID productId) {
+        apiFacade.deleteById(productId);
+
+        return ResponseEntity.noContent().build();
     }
 }

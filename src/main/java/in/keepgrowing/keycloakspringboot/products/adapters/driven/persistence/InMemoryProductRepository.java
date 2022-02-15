@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class InMemoryProductRepository implements ProductRepository {
 
-    protected final static int INITIAL_AMOUNT = 20;
+    protected static final int INITIAL_AMOUNT = 20;
 
     private final Dummy4j dummy;
     private final List<Product> products;
@@ -50,5 +50,13 @@ public class InMemoryProductRepository implements ProductRepository {
         products.add(product);
 
         return product;
+    }
+
+    @Override
+    public void deleteById(UUID productId) {
+        products.stream()
+                .filter(p -> p.getId().equals(productId))
+                .findFirst()
+                .ifPresent(products::remove);
     }
 }

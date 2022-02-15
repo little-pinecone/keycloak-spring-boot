@@ -13,4 +13,6 @@ public interface ProductRepository {
     Optional<Product> findById(UUID productId);
 
     Product save(Product product);
+
+    void deleteById(UUID productId);
 }

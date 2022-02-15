@@ -47,6 +47,7 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     private KeycloakAuthenticationProvider getKeycloakAuthenticationProvider() {
         KeycloakAuthenticationProvider authenticationProvider = keycloakAuthenticationProvider();
         var mapper = new SimpleAuthorityMapper();
+        mapper.setConvertToUpperCase(true);
         authenticationProvider.setGrantedAuthoritiesMapper(mapper);
 
         return authenticationProvider;

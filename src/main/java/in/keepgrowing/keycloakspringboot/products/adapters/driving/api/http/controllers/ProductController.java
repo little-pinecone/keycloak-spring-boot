@@ -3,6 +3,7 @@ package in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.con
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.requests.ProductRequest;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
+import in.keepgrowing.keycloakspringboot.security.adapters.driving.spring.annotations.MustBeChiefOperatingOfficer;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -37,7 +38,8 @@ public class ProductController {
     }
 
     @DeleteMapping("{productId}")
-    @Operation(summary = "Remove a product by id")
+    @MustBeChiefOperatingOfficer
+    @Operation(summary = "Remove a product by id (available only for the chief-operating-officer role)")
     public ResponseEntity<Void> delete(@PathVariable UUID productId) {
         apiFacade.deleteById(productId);
 

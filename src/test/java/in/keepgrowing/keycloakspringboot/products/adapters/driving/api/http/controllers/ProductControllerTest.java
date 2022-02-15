@@ -7,7 +7,8 @@ import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.mode
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.TestProductResponseProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
 import in.keepgrowing.keycloakspringboot.products.config.MvcConfig;
-import in.keepgrowing.keycloakspringboot.shared.config.annotations.RestControllerIntegrationTestConfig;
+import in.keepgrowing.keycloakspringboot.testing.annotations.RestControllerIntegrationTestConfig;
+import in.keepgrowing.keycloakspringboot.testing.annotations.WithMockChiefOperationOfficer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,11 +92,20 @@ class ProductControllerTest {
     }
 
     @Test
-    @WithMockUser
+    @WithMockChiefOperationOfficer
     void shouldDeleteProduct() throws Exception {
         mvc.perform(delete(BASE_PATH + "/" + TEST_UUID)
                         .contentType(MediaType.APPLICATION_JSON)
                         .with(csrf()))
                 .andExpect(status().isNoContent());
+    }
+
+    @Test
+    @WithMockUser
+    void shouldDenyAccessToDeletingProduct() throws Exception {
+        mvc.perform(delete(BASE_PATH + "/" + TEST_UUID)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .with(csrf()))
+                .andExpect(status().isForbidden());
     }
 }

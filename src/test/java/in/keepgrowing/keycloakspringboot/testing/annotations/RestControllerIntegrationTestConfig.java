@@ -1,8 +1,10 @@
-package in.keepgrowing.keycloakspringboot.shared.config.annotations;
+package in.keepgrowing.keycloakspringboot.testing.annotations;
 
+import in.keepgrowing.keycloakspringboot.testing.config.ControllerIntegrationTestConfig;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.core.annotation.AliasFor;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -13,6 +15,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @WebMvcTest
 @ActiveProfiles("test")
+@ContextConfiguration(classes = ControllerIntegrationTestConfig.class)
 public @interface RestControllerIntegrationTestConfig {
 
     /**

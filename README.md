@@ -73,7 +73,12 @@ Below you'll find a list of default user accounts.
 
 #### Swagger UI
 
-[http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+Swagger UI is available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html).
+The Keycloak client details are available in the `application.properties` file:
+* client_id: `spring-boot-example-app`
+* client_secret: `QjLCjk1I9sugcZSDFCsyAkoLOqAHDLKC`
+
+![Swagger UI screenshot](readme-images/swagger-ui.png)
 
 #### OpenAPI
 

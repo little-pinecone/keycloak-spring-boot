@@ -1,4 +1,4 @@
-package in.keepgrowing.keycloakspringboot.products.config;
+package in.keepgrowing.keycloakspringboot.shared.config;
 
 import in.keepgrowing.keycloakspringboot.KeycloakSpringBootApplication;
 import org.springframework.context.annotation.Configuration;

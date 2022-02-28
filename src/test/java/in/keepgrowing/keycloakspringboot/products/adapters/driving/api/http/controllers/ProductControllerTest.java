@@ -6,7 +6,7 @@ import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.mode
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.ProductResponse;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.model.responses.TestProductResponseProvider;
 import in.keepgrowing.keycloakspringboot.products.adapters.driving.api.http.services.ProductHttpApiFacade;
-import in.keepgrowing.keycloakspringboot.products.config.MvcConfig;
+import in.keepgrowing.keycloakspringboot.shared.config.MvcConfig;
 import in.keepgrowing.keycloakspringboot.testing.annotations.RestControllerIntegrationTestConfig;
 import in.keepgrowing.keycloakspringboot.testing.annotations.WithMockChiefOperationOfficer;
 import org.junit.jupiter.api.BeforeEach;

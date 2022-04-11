@@ -61,6 +61,6 @@ public class SwaggerConfig {
         return new OAuthFlow()
                 .authorizationUrl(protocolUrl + "/auth")
                 .tokenUrl(protocolUrl + "/token")
-                .scopes(new Scopes());
+                .scopes(new Scopes().addString("openid", ""));
     }
 }

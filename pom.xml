@@ -15,9 +15,9 @@
 	<description>Demo Spring Boot app showing security config with Keycloak</description>
 	<properties>
 		<java.version>17</java.version>
-		<dummy4j.version>0.9.0</dummy4j.version>
+		<dummy4j.version>0.10.0</dummy4j.version>
 		<keycloak-adapter.version>16.1.1</keycloak-adapter.version>
-		<springdoc.version>1.6.6</springdoc.version>
+		<springdoc.version>1.6.8</springdoc.version>
 	</properties>
 
 	<dependencyManagement>

@@ -114,7 +114,7 @@ screen.
 
 ## Built With
 
-* [Spring Boot v2.6+](https://spring.io/projects/spring-boot)
+* [Spring Boot v2.7+](https://spring.io/projects/spring-boot)
 * [OpenJDK 17](https://jdk.java.net/17/), [Maven](https://maven.apache.org/)
 * [Keycloak](https://www.keycloak.org/), [jboss/keycloak Docker image](https://hub.docker.com/r/jboss/keycloak/),
   [Keycloak Spring Boot adapter](https://www.keycloak.org/docs/latest/securing_apps/#_spring_boot_adapter)

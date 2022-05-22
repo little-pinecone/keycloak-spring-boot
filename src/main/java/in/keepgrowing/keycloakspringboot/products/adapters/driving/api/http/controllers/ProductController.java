@@ -39,7 +39,8 @@ public class ProductController {
 
     @DeleteMapping("{productId}")
     @MustBeChiefOperatingOfficer
-    @Operation(summary = "Remove a product by id (available only for the chief-operating-officer role)")
+    @Operation(summary = "Remove a product by id. Available only for the chief-operating-officer role. " +
+            "By default only christina has this role.")
     public ResponseEntity<Void> delete(@PathVariable UUID productId) {
         apiFacade.deleteById(productId);
 

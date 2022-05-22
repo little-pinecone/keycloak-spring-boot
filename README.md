@@ -43,6 +43,15 @@ You can run tests with:
 mvn test
 ```
 
+### Running Keycloak
+
+Run the `keycloak` service with the following commands:
+
+```shell
+cd docker
+docker compose up -d
+```
+
 ### Credentials
 
 Below you'll find a list of default user accounts.
